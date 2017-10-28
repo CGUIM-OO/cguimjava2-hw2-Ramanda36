@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /**
  * @author TODO: please add student ID and name here
+ * B0544224 樊驊
  * Try to write some comments for your codes (methods, 15 points)
  */
 public class HW2 {
@@ -26,8 +27,8 @@ public class HW2 {
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW2
-	 * @param allCards 所有的牌
-	 * @param nDeck 總共有幾副牌
+	 * @param allCards �������
+	 * @param nDeck 蝮賢��嗾����
 	 * @return
 	 */
 	private static boolean isAllCardsCorrect(ArrayList<Card> allCards,int nDeck){
@@ -57,6 +58,7 @@ public class HW2 {
 				}
 			}
 		}else{
+			System.out.print("RRRRRRRRRRRRRRR");
 			isCorrect=false;
 		}
 		return isCorrect;
@@ -68,6 +70,7 @@ public class HW2 {
  */
 class Deck{
 	private ArrayList<Card> cards;
+	
 	//TODO: Please implement the constructor (30 points)
 	public Deck(int nDeck){
 		cards=new ArrayList<Card>();
@@ -77,13 +80,28 @@ class Deck{
 		//Card card=new Card(1,1); ->means new card as clubs ace
 		//cards.add(card);
 		//Sample code end
+		for(int q = 0 ; q < nDeck; q++)     //外層迴圈看輸入幾副牌  
+		{
+			for(int x = 1; x <= 4 ; x++)    //共有4種花色
+			{
+				for(int y = 1 ; y <= 13 ; y ++)//數字
+				{
+					Card card=new Card(x,y); 
+					cards.add(card);
+				} //設定每副牌的所有資料
+			}
+		}
 
 	}	
 	//TODO: Please implement the method to print all cards on screen (10 points)
 	public void printDeck(){
 		//Hint: print all items in ArrayList<Card> cards, 
 		//TODO: please implement and reuse printCard method in Card class (5 points)
-
+		for(int k = 0 ; k < cards.size();k++)
+		{
+			cards.get(k).printCard();
+		}
+	
 	}
 	public ArrayList<Card> getAllCards(){
 		return cards;
@@ -106,7 +124,10 @@ class Card{
 	//TODO: 1. Please implement the printCard method (20 points, 10 for suit, 10 for rank)
 	public void printCard(){
 		//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
-
+		String[] suitStr = {"Clubs","Diamonds","Hearts","Spades"};//將suit跟rank都寫好
+		String[] rankStr = {"Ace","two","three","four",
+				"five","six","seven","eight","nine","ten","jack","queen","king"}; 
+		System.out.println(suitStr[getSuit()-1] +" " + rankStr[getRank()-1]);//當餐數傳入甚麼時就直接回應
 	}
 	public int getSuit(){
 		return suit;
